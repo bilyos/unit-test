@@ -1,86 +1,83 @@
-    //exercice 1
+// ----------- Exercice 1 -----------
+const { arrondirEuler, findMax, genererFacture, fusionnerEtTrier, calculerArea, average, inverserOrdre, filtrerParPage, fetchData} = require("./exo.js");
 
-const findMax = require('./exo');
-const e = require('./exo')
-
-test("test if euler have 4 number after commas", ()=>{
-    expect(Number(2.71828.toFixed(4))).toEqual(2.7183)
+test("Vérifie si le nombre d'Euler est arrondi à 4 chiffres après la virgule", () => {
+    const euler = 2.718281828459045
+    expect(arrondirEuler(euler)).toEqual(2.7183); 
 });
 
+//--------- Exercice 2 -------------
+test("trouver le grand nombre dans un tableau", ()=>{
+    const max = Math.max(...number =[1, 4, 8, 9])
+    expect(findMax(max)).toEqual(9);
+})
 
-test("find the max number into an array", ()=>{
-    const max = findMax();
-    expect(max).toEqual(findMax([1, 4, 8, 9]));
+//---------- Exercice 3 ------------
+
+test("Générer une facture avec les bonnes informations", () => {
+    const quantite = 3;
+    const produit = "Ordinateur portable";
+    const prixUnitaire = 1200;
+    const resultatAttendu = "Vous avez acheté 3 unités de Ordinateur portable pour un total de $3600";
+    expect(genererFacture(quantite, produit, prixUnitaire)).toBe(resultatAttendu);
 });
 
- //exercice 2
+// --------- Exercice 4 --------------
 
-const quantity = 10;
-const product = { fruit: "banane" };
-const price = 50;
-const bill = `vous avez acheté ${quantity} unités de ${product.fruit} pour $${price * quantity}`;
+test("verifier la fusion de deux tableaux", ()=>{
+    const tab1 = [2, 4, 5]
+    const tab2 = [9, 7, 0, 8]
+    const tableauCombine = [...tab1, ...tab2];
+    expect(tableauCombine).toEqual([2, 4, 5, 9, 7, 0, 8])
+})
 
-test("La facture est correctement formatée", () => {
-    expect(bill).toMatch(/vous avez acheté \d+ unités de banane pour \$\d+/);
-  });
-  
-  test("La quantité est correctement insérée dans la facture", () => {
-    expect(bill).toContain(`${quantity} unités`);
-  });
-  
-  test("Le nom du produit est correctement inséré dans la facture", () => {
-    expect(bill).toContain(product.fruit);
-  });
-  
-  test("Le montant total est correctement calculé", () => {
-    const totalAmount = quantity * price;
-    expect(bill).toContain(`$${totalAmount}`);
-  });
+test("verifier que le tableau est trié", ()=>{
+    const tab1 = [2, 4, 5]
+    const tab2 = [9, 7, 0, 8]
+    const tableauCombine = [...tab1, ...tab2].sort();
+    expect(tableauCombine).toEqual([0, 2, 4, 5, 7, 8, 9])
+})
 
-//Exercice 3
-const arr1 = [1, 9, 0, 3]
-const arr2 = [2, 5, 7, 8]
-const combinedArr = [...arr1, ...arr2]
-
-test('verifier si les deux array sont bien combinés', ()=>{
-    expect(combinedArr).toStrictEqual([...arr1, ...arr2])
+//---------- Exercice 6---------
+test("Calculer correctement l'aire d'un cercle", () => {
+    const rayon = 5;
+    const area =  5 * 5 * Math.PI; 
+    expect(calculerArea(rayon)).toBe(area);
 });
 
-test('verifier que le tableaux combiner est trier par ordre croissant', ()=>{
-    combinedArr.sort();
-    expect(combinedArr).toEqual([...arr1, ...arr2].sort())
+test("Gérer correctement le cas où le rayon est manquant", () => {
+    const rayon = null;
+    const messageAttendu = "Radius is missing!";
+    expect(calculerArea(rayon)).toBe(messageAttendu);
 });
 
+// ----------- Exercice 7 --------
 
-//------------ exericice 4----------
+test("calculer la moyenne des nombres dans un tableau", ()=>{
+    const tab = [2, 5, 0, 1]
+   expect(average(tab)).toBe(2)
+})
 
-const car = {make: "mercedes", model: "maybach"}
-const{make, model, year="2024"} = car
+// -------- Exercice 8 ---------
+test("inverser l'ordre des elt dans un tableau", ()=>{
+    const tab = ["toto", "tata", "mama", "papa"]
+    expect(inverserOrdre(tab)).toEqual(["papa", "mama", "tata", "toto"])
+})
 
-test("La valeur extraite pour make est correcte", () => {
-    expect(make).toBe("mercedes");
-  });
-  
-  test("La valeur extraite pour model est correcte", () => {
-    expect(model).toBe("maybach");
-  });
-  
-  test("La valeur par défaut de year est correcte", () => {
-    expect(year).toBe("2024");
-  });
-//Exercice 4
+// --------- Exercice 9 ----------
 
-const calculerArea = require('./exo');
-
-test("Vérifier que la valeur du rayon est valide", () => {
-    const rayonValide = Number(4);
-    expect(rayonValide).toEqual(4);
+test("Filtrer les livres par nombre de pages", () => {
+    const livres = [
+        { titre: "jeune millionnaire", page: 250 },
+        { titre: "40 ans de prison", page: 310 },
+        { titre: "Reflechir", page: 300 },
+        { titre: "48 loi du pouvoir", page: 500 },
+    ];
+    const resultatAttendu = [
+        { titre: "40 ans de prison", page: 310 },
+        { titre: "48 loi du pouvoir", page: 500 },
+    ];
+    expect(filtrerParPage(livres)).toEqual(resultatAttendu);
 });
 
-test("Vérifier que le calcul de l'aire est correct", () => {
-    const rayonValide = 7;
-    const aireAttendue = Math.PI * rayonValide * rayonValide;
-    expect(calculerArea(rayonValide)).toBe(aireAttendue);
-  });
-  
-  
+//------------ Exercice 10 ------------
