@@ -1,73 +1,79 @@
-//------ Exercice 1 ------
-const euler = 2.71828.toFixed(4)
-console.log(euler)
+// ------ Exercice 1 ------
+function arrondirEuler(nombre) {
+  return Math.round(nombre * 10000) / 10000;
+}
 
-//------ Exercice 2 ----------
+
+
+// ------ Exercice 2 ----------
 
 const findMax= ()=>{
   const max = Math.max(...number =[1, 4, 8, 9])
-  console.log(max)
+  return max;
 
 }
-findMax()
 
-//------ Exercice 3 -----
-const quantity =10;
-const product = {fruit: "banane"}
-const price = 50
-const bill = `you purchased ${quantity} units of ${product.fruit} for $${price * quantity}`
-console.log(bill)
 
-//--------- Exercice 4 ------
-const arr1 = [1, 9, 0, 3]
-const arr2 = [2, 5, 7, 8]
-const combinedArr = [...arr1, ...arr2].sort()
-console.log(combinedArr)
+// ------ Exercice 3 -----
+function genererFacture(quantite, produit, prixUnitaire) {
+    const facture = `Vous avez acheté ${quantite} unités de ${produit} pour un total de $${quantite * prixUnitaire}`;
+    return facture;
+}
 
-// ------ Exercice 5 --------
-const car = {make: "mercedes", model: "maybach"}
-const{make, model, year="2024"} = car
-// console.log(year)
-// console.log(model)
-// console.log(make)
+// --------- Exercice 4 ------
+function fusionnerEtTrier(tableau1, tableau2) {
+    const tableauCombine = [...tableau1, ...tableau2];
+    const tableauTrie = tableauCombine.sort();
+    return tableauTrie;
+}
+
+//  ------ Exercice 5 --------
+function getInfoVehicule({make, model, year = "2024"}) {
+  return {make, model, year};
+}
+const car = {make: "Mercedes", model: "Maybach"};
+const {make, model, year} = getInfoVehicule(car);
+
 
 //------ Exercice 6-----------
-
 const calculerArea = (radius) => {
   if (!radius) {
     return "Radius is missing!";
   } else {
     const area = radius * radius * Math.PI;
-    console.log(area);
+    return  area;
   }
 };
-calculerArea();
-module.exports = calculerArea;
+
 
 // ----- Exercice 7 ------
-
 const average = (number=[1, 3, 4, 5])=> {
     let sum =0;
-    for(let i =0; i< number.length; i++){sum += number[i]}
-    return console.log((sum /number.length).toFixed(2));
-    }; average()
+    for(let i =0; i< number.length; i++)
+    {sum += number[i]}
+    return Math.round((sum / number.length) * 100) / 100;
+    };
+ 
 
-//-------- Exercice 8 ---------
+// -------- Exercice 8 ---------
 
-const item = ["Rolls royce", "Ferrari", "Mercedes", "Maseratti", "Aston Martin", "Audi"];
-const newItem = item.map((items)=> items).reverse()
-console.log(newItem)
+function inverserOrdre( items = ["Rolls Royce", "Ferrari", "Mercedes", "Maserati", "Aston Martin", "Audi"]) {
+    return items.map((item) => item).reverse();
+}
 
-//-------- Exercice 9 ---------
 
-const array = [
-  { title: "jeune millionnaire", page: 250 },
-  { title: "40 ans de prison", page: 310 },
-  { title: "Reflechir", page: 300 },
-  { title: "48 loi du pouvoir", page: 500 },
-];
-const newArray = array.filter((array) => array.page > 300);
-console.log(newArray);
+// -------- Exercice 9 ---------
+ 
+function filtrerParPage([]) {
+  const tableau  =  [
+    {  titre : "jeune millionnaire" ,  page : 250  } ,
+    {  titre : "40 ans de prison" ,  page : 310  } ,
+    {  titre : "Reflechir" ,  page : 300  } ,
+    {  titre : "48 loi du pouvoir" ,  page : 500  } ,
+  ] ;
+  return tableau.filter((element) => element.page > 300);
+}
+
   
 
 // ----------- Exercice 10 --------
@@ -78,3 +84,5 @@ function fetchData() {
       }, delay);
     });
   }
+
+  module.exports = {arrondirEuler, findMax, genererFacture, fusionnerEtTrier, calculerArea, average, inverserOrdre, filtrerParPage, fetchData}
