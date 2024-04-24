@@ -37,7 +37,18 @@ test("verifier que le tableau est trié", ()=>{
     const tableauCombine = [...tab1, ...tab2].sort();
     expect(tableauCombine).toEqual([0, 2, 4, 5, 7, 8, 9])
 })
+//-----------Exercice 5 ------------
 
+test("Renvoie un objet avec les valeurs fournies", () => {
+    const car = {
+      make: "Toyota",
+      model: "Corolla",
+      year: "2022"
+    };
+    const result = getInfoVehicule(car);
+    expect(result).toEqual(car);
+  });
+  
 //---------- Exercice 6---------
 test("Calculer correctement l'aire d'un cercle", () => {
     const rayon = 5;

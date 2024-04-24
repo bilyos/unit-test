@@ -28,11 +28,10 @@ function fusionnerEtTrier(tableau1, tableau2) {
 }
 
 //  ------ Exercice 5 --------
-function getInfoVehicule({make, model, year = "2024"}) {
-  return {make, model, year};
+function getInfoVehicule({make, model, year}) {
+  return  {make, model, year = "2024"} = car;
 }
-const car = {make: "Mercedes", model: "Maybach"};
-const {make, model, year} = getInfoVehicule(car);
+
 
 
 //------ Exercice 6-----------
@@ -40,8 +39,7 @@ const calculerArea = (radius) => {
   if (!radius) {
     return "Radius is missing!";
   } else {
-    const area = radius * radius * Math.PI;
-    return  area;
+    return radius * radius * Math.PI; ;
   }
 };
 
@@ -58,19 +56,19 @@ const average = (number=[1, 3, 4, 5])=> {
 // -------- Exercice 8 ---------
 
 function inverserOrdre( items = ["Rolls Royce", "Ferrari", "Mercedes", "Maserati", "Aston Martin", "Audi"]) {
-    return items.map((item) => item).reverse();
+    return items.map((item) => item.reverse());
 }
 
 
 // -------- Exercice 9 ---------
  
-function filtrerParPage([]) {
-  const tableau  =  [
-    {  titre : "jeune millionnaire" ,  page : 250  } ,
-    {  titre : "40 ans de prison" ,  page : 310  } ,
-    {  titre : "Reflechir" ,  page : 300  } ,
-    {  titre : "48 loi du pouvoir" ,  page : 500  } ,
-  ] ;
+function filtrerParPage( tableau  =  [
+  {  titre : "jeune millionnaire" ,  page : 250  } ,
+  {  titre : "40 ans de prison" ,  page : 310  } ,
+  {  titre : "Reflechir" ,  page : 300  } ,
+  {  titre : "48 loi du pouvoir" ,  page : 500  } ,
+] ) {
+  
   return tableau.filter((element) => element.page > 300);
 }
 
