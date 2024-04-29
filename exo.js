@@ -1,81 +1,52 @@
 // ------ Exercice 1 ------
-function arrondirEuler(nombre) {
-  return Math.round(nombre * 10000) / 10000;
-}
-
+export const arrondirEuler = (nombre)=>  Math.round(nombre * 10000) / 10000;
 
 
 // ------ Exercice 2 ----------
 
-const findMax= ()=>{
-  const max = Math.max(...number =[1, 4, 8, 9])
-  return max;
-
-}
+export const findMax= (array)=> array.forEach(element => {
+  let max = [0]
+  if(element > max) return max = element
+});
 
 
 // ------ Exercice 3 -----
-function genererFacture(quantite, produit, prixUnitaire) {
-    const facture = `Vous avez acheté ${quantite} unités de ${produit} pour un total de $${quantite * prixUnitaire}`;
-    return facture;
-}
+export const genererFacture = (quantite, produit, prixUnitaire)=> facture = `Vous avez acheté ${quantite} unités de ${produit} pour un total de $${quantite * prixUnitaire}`;
+     
 
 // --------- Exercice 4 ------
-function fusionnerEtTrier(tableau1, tableau2) {
-    const tableauCombine = [...tableau1, ...tableau2];
-    const tableauTrie = tableauCombine.sort();
-    return tableauTrie;
-}
+export const fusionnerEtTrier = (tableau1, tableau2)=> tableau1.concat(tableau2)
+    
 
 //  ------ Exercice 5 --------
-function getInfoVehicule({make, model, year}) {
+export const getInfoVehicule = (car)=> {
   return  {make, model, year = "2024"} = car;
 }
 
 
-
 //------ Exercice 6-----------
-const calculerArea = (radius) => {
-  if (!radius) {
-    return "Radius is missing!";
-  } else {
-    return radius * radius * Math.PI; ;
-  }
-};
-
+export const calculerArea = (radius) =>  !radius ? "Radius is missing!" : radius * radius * Math.PI; ;
+   
 
 // ----- Exercice 7 ------
-const average = (number=[1, 3, 4, 5])=> {
-    let sum =0;
-    for(let i =0; i< number.length; i++)
-    {sum += number[i]}
-    return Math.round((sum / number.length) * 100) / 100;
-    };
+export const average = (tableau) => {
+  const sum = tableau.reduce((acc, curr) => acc + curr, 0);
+  return Math.round((sum / numbers.length) * 100) / 100;
+};
  
 
 // -------- Exercice 8 ---------
 
-function inverserOrdre( items = ["Rolls Royce", "Ferrari", "Mercedes", "Maserati", "Aston Martin", "Audi"]) {
-    return items.map((item) => item.reverse());
-}
-
+export const inverserOrdre = ()=> items.map((item) => item.reverse());
+     
 
 // -------- Exercice 9 ---------
  
-function filtrerParPage( tableau  =  [
-  {  titre : "jeune millionnaire" ,  page : 250  } ,
-  {  titre : "40 ans de prison" ,  page : 310  } ,
-  {  titre : "Reflechir" ,  page : 300  } ,
-  {  titre : "48 loi du pouvoir" ,  page : 500  } ,
-] ) {
+export const  filtrerParPage = ()=> tableau.filter((element) => element.page > 300);
   
-  return tableau.filter((element) => element.page > 300);
-}
-
   
-
 // ----------- Exercice 10 --------
-function fetchData() {
+export const fetchData =()=> {
     return new Promise((resolve, reject) => {
       const delay = Math.floor(Math.random() * (8000 - 2000 + 1)) + 2000;
       setTimeout(() => { resolve("Données récupérées avec succès !");
@@ -83,4 +54,3 @@ function fetchData() {
     });
   }
 
-  module.exports = {arrondirEuler, findMax, genererFacture, fusionnerEtTrier, calculerArea, average, inverserOrdre, filtrerParPage, fetchData}
